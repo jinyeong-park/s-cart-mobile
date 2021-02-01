@@ -11,14 +11,14 @@
   - Chat with sellers
 
 ## Screenshot
-![sCart](./sCart_screenshot.png)
+![sCart]()
 
 ## Deploy
 
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 
 
 
