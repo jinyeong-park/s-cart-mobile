@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 // <Heading>My Heading</Heading>
 function AppText(props) {
@@ -8,10 +8,12 @@ function AppText(props) {
   );
 }
 
+
 const styles = StyleSheet.create({
   text: {
+    color: "tomato",
     fontSize: 18,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir"
+    fontFamily: "Roboto"
   }
 });
 

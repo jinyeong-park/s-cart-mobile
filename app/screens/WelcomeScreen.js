@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button, ImageBackground, Image } from 'react-native';
+import AppButton from '../components/AppButton';
 
 export default function WelcomeScreen() {
   return (
@@ -12,12 +13,14 @@ export default function WelcomeScreen() {
           style={styles.logo}
           source={require('../assets/sCart-logo.png')}
         />
-        <Text>Find your taste</Text>
+        <Text style={styles.tagline}>Find your taste</Text>
 
       </View>
 
-      <View style={styles.loginButton}></View>
-      <View style={styles.registerButton}></View>
+      <View style={styles.buttonContainer}>
+        <AppButton title="Login" />
+        <AppButton title="Register" color="secondary" />
+      </View>
     </ImageBackground>
 
   )
@@ -31,26 +34,35 @@ const styles = StyleSheet.create({
     alignItems: "center",
     opacity: 0.7
   },
-  loginButton: {
-    width: '100%',
-    height: 70,
-    backgroundColor: "#fc5c65"
+  buttonContainer: {
+    padding: 20,
+    width: '100%'
   },
-  registerButton: {
-    width: '100%',
-    height: 70,
-    backgroundColor: "#383E56"
-  },
+  // loginButton: {
+  //   width: '100%',
+  //   height: 70,
+  //   backgroundColor: "#fc5c65",
+  //   borderRadius: 30,
+  // },
+  // registerButton: {
+  //   width: '100%',
+  //   height: 70,
+  //   backgroundColor: "#383E56"
+  // },
   logoContainer: {
     flexDirection: "row",
     paddingRight: 100,
     alignItems: "center",
-    bottom: 300,
+    bottom: 280,
   },
   logo: {
     width: 140,
     height: 100,
     top: 0,
+  },
+  tagline: {
+    fontWeight: "600",
+
   }
 
 })
