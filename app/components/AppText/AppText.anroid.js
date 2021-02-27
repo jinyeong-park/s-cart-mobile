@@ -2,16 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // <Heading>My Heading</Heading>
-function AppText(props) {
+function AppText({ children, style }) {
   return (
-    <Text style={styles.text}>{props.children}</Text>
+    <Text
+      style={[styles.text, style]}
+    >
+      {children}
+    </Text>
   );
 }
 
 
 const styles = StyleSheet.create({
   text: {
-    color: "tomato",
     fontSize: 18,
     fontFamily: "Roboto"
   }
