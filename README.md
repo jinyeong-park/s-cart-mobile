@@ -1,6 +1,6 @@
 # sCart mobile App
 [Link to sCart mobile]()
-  > E-commerce 'sCart - Find your taste' mobile app
+  > E-commerce 'sCart - Share your shopping experience' mobile app
   - The easy way to sell or buy almost anything.
   - If you get something you don't use, never used or just outgrew? Sell it.
 
