@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    opacity: 0.8
+    opacity: 0.7
   },
   loginButton: {
     width: '100%',
