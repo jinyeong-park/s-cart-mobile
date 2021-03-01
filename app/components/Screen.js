@@ -12,7 +12,8 @@ function Screen(props) {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Constants.StatusBarHeight
+    paddingTop: Constants.StatusBarHeight,
+    flex: 1  // screen takes entire screen
   }
 });
 
