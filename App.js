@@ -24,8 +24,8 @@ export default function App() {
     // </View>
 
     // <WelcomeScreen />
-    // <ViewImageScreen/>
-    <ListingDetailsScreen />
+    <ViewImageScreen/>
+    // <ListingDetailsScreen />
 
   )
 }
