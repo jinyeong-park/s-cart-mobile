@@ -4,8 +4,9 @@ import { FlatList,  StyleSheet, View } from 'react-native';
 import ListItem from '../components/ListItem';
 import Screen from '../components/Screen';
 import ListItemSeparator from '../components/ListItemSeparator';
+import ListItemDeleteAction from '../components/ListItemDeleteAction';
 
-// create object
+// create temporary object
 const message = [
   {
     id: 1,
@@ -34,6 +35,8 @@ function MessagesScreen(props) {
             subTitle={item.description}
             image={item.image}
             onPress={() => console.log("Message selecter", item)}
+            renderRightActions={() =>
+              <ListItemDeleteAction onPress={() => console.log('delete item:', item)}/>}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
