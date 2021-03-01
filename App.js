@@ -11,7 +11,7 @@ import MessagesScreen from './app/screens/MessagesScreen';
 import ListItemDeleteAction from './app/components/ListItemDeleteAction.js'
 import Screen from './app/components/Screen'
 import Icon from './app/components/Icon'
-
+import ListItem from './app/components/ListItem'
 
 
 export default function App() {
@@ -31,9 +31,18 @@ export default function App() {
     // <ViewImageScreen/>
     // <ListingDetailsScreen />
     // <MessagesScreen />
+    // <Screen>
+    //   <Icon name="email" size={50} backgroundColor="pink" iconColor="black" />
+    // </Screen>
     <Screen>
-      <Icon name="email" size={50} backgroundColor="pink" iconColor="black" />
+      <ListItem
+        title="My title"
+        subTitle="My subtitle"
+        ImageComponent={<Icon name="email" size={50} backgroundColor="pink" iconColor="black" />}
+      />
+
     </Screen>
+
 
 
   )

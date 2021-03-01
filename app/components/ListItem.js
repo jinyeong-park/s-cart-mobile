@@ -6,7 +6,7 @@ import AppText from './AppText/AppText';
 
 import colors from '../config/colors'
 
-function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
+function ListItem({ title, subTitle, image, ImageComponent, onPress, renderRightActions }) {
   return (
     <Swipeable
       renderRightActions={renderRightActions}>
@@ -14,10 +14,12 @@ function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
         underlayColor={'#f8f4f4'}
         onPress={onPress}>
         <View style={styles.container}>
-          <Image style={styles.image} source={image} />
-          <View>
+          {ImageComponent}
+          {/* if there is no image, remove that space image &&*/}
+          {image && <Image style={styles.image} source={image} />}
+          <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
+            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
         </View>
       </TouchableHighlight>
@@ -37,9 +39,12 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     marginRight: 10,
   },
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: "center"
+  },
   title: {
     fontWeight: "500",
-
   },
   subTitle: {
     color: colors.medium
