@@ -7,6 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import AppText from './app/components/AppText/AppText.js';
 import Card from './app/components/Card';
+import MessagesScreen from './app/screens/MessagesScreen';
 
 
 
@@ -24,8 +25,9 @@ export default function App() {
     // </View>
 
     // <WelcomeScreen />
-    <ViewImageScreen/>
+    // <ViewImageScreen/>
     // <ListingDetailsScreen />
+    <MessagesScreen />
 
   )
 }
