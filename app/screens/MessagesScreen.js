@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList,  StyleSheet, View } from 'react-native';
 
 import ListItem from '../components/ListItem';
@@ -7,7 +7,7 @@ import ListItemSeparator from '../components/ListItemSeparator';
 import ListItemDeleteAction from '../components/ListItemDeleteAction';
 
 // create temporary object
-const message = [
+const initialMessage = [
   {
     id: 1,
     title: "T1",
@@ -23,11 +23,21 @@ const message = [
 ]
 
 function MessagesScreen(props) {
+  // in order to have state, use useState hooks
+  const [messages, setMessages] = useState(initialMessage);
+
+  const handleDelete = (message) => {
+    // Delete the message from messages
+    // Call the server (later)
+    // use filter: if id is not the same, add those result to newMessages
+    const newMessages = messages.filter((m) => m.id !== message.id)
+    setMessages(newMessages);
+  }
   return (
     <Screen>
       <FlatList
-        data={message}
-        keyExtractor={message => message.id.toString()}
+        data={messages}
+        keyExtractor={messages => messages.id.toString()}
         renderItem={({ item }) => (
           // use reusuable component ListItem
           <ListItem
@@ -36,7 +46,7 @@ function MessagesScreen(props) {
             image={item.image}
             onPress={() => console.log("Message selecter", item)}
             renderRightActions={() =>
-              <ListItemDeleteAction onPress={() => console.log('delete item:', item)}/>}
+              <ListItemDeleteAction onPress={() => handleDelete(item)}/>}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
