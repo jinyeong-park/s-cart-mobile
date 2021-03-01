@@ -9,6 +9,8 @@ import AppText from './app/components/AppText/AppText.js';
 import Card from './app/components/Card';
 import MessagesScreen from './app/screens/MessagesScreen';
 import ListItemDeleteAction from './app/components/ListItemDeleteAction.js'
+import Screen from './app/components/Screen'
+import Icon from './app/components/Icon'
 
 
 
@@ -28,7 +30,10 @@ export default function App() {
     // <WelcomeScreen />
     // <ViewImageScreen/>
     // <ListingDetailsScreen />
-    <MessagesScreen />
+    // <MessagesScreen />
+    <Screen>
+      <Icon name="email" size={50} backgroundColor="pink" iconColor="black" />
+    </Screen>
 
 
   )
