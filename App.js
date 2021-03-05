@@ -8,12 +8,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import AppText from './app/components/AppText/AppText.js';
 import Card from './app/components/Card';
 import MessagesScreen from './app/screens/MessagesScreen';
-import ListItemDeleteAction from './app/components/ListItemDeleteAction.js'
-import Screen from './app/components/Screen'
-import Icon from './app/components/Icon'
-import ListItem from './app/components/ListItem'
+import ListItemDeleteAction from './app/components/ListItemDeleteAction.js';
+import Screen from './app/components/Screen';
+import Icon from './app/components/Icon';
+import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
-
+import ListingScreens from './app/screens/ListingScreens';
 
 export default function App() {
 
@@ -42,7 +42,8 @@ export default function App() {
     //     ImageComponent={<Icon name="email" size={50} backgroundColor="pink" iconColor="black" />}
     //   />
     // </Screen>
-    <AccountScreen/>
+    // <AccountScreen/>
+    <ListingScreens />
 
 
 
