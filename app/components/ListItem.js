@@ -6,7 +6,13 @@ import AppText from './AppText/AppText';
 
 import colors from '../config/colors'
 
-function ListItem({ title, subTitle, image, ImageComponent, onPress, renderRightActions }) {
+function ListItem({
+  title,
+  subTitle,
+  image,
+  IconComponent,
+  onPress,
+  renderRightActions }) {
   return (
     <Swipeable
       renderRightActions={renderRightActions}>
@@ -14,11 +20,12 @@ function ListItem({ title, subTitle, image, ImageComponent, onPress, renderRight
         underlayColor={'#f8f4f4'}
         onPress={onPress}>
         <View style={styles.container}>
-          {ImageComponent}
-          {/* if there is no image, remove that space image &&*/}
+          {IconComponent}
+          {/* if there is no image, remove the image space&&*/}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
+            {/* if there is no subtitle, make the one title in center */}
             {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
         </View>
@@ -32,6 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
+    backgroundColor: colors.white,
   },
   image: {
     width: 70,

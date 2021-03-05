@@ -12,6 +12,7 @@ import ListItemDeleteAction from './app/components/ListItemDeleteAction.js'
 import Screen from './app/components/Screen'
 import Icon from './app/components/Icon'
 import ListItem from './app/components/ListItem'
+import AccountScreen from './app/screens/AccountScreen';
 
 
 export default function App() {
@@ -34,14 +35,14 @@ export default function App() {
     // <Screen>
     //   <Icon name="email" size={50} backgroundColor="pink" iconColor="black" />
     // </Screen>
-    <Screen>
-      <ListItem
-        title="My title"
-        subTitle="My subtitle"
-        ImageComponent={<Icon name="email" size={50} backgroundColor="pink" iconColor="black" />}
-      />
-
-    </Screen>
+    // <Screen>
+    //   <ListItem
+    //     title="My title"
+    //     subTitle="My subtitle"
+    //     ImageComponent={<Icon name="email" size={50} backgroundColor="pink" iconColor="black" />}
+    //   />
+    // </Screen>
+    <AccountScreen/>
 
 
 
