@@ -14,6 +14,7 @@ import Icon from './app/components/Icon';
 import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingScreens from './app/screens/ListingScreens';
+import AppTextInput from './app/components/AppTextInput';
 
 export default function App() {
 
@@ -43,7 +44,10 @@ export default function App() {
     //   />
     // </Screen>
     // <AccountScreen/>
-    <ListingScreens />
+    // <ListingScreens />
+    <Screen>
+      <AppTextInput placeholder="Username" icon="email"/>
+    </Screen>
 
 
 
