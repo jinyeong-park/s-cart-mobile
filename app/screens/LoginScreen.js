@@ -5,6 +5,7 @@ import Screen from '../components/Screen'
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText/AppText';
+import ErrorMessage from '../components/ErrorMessage';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -37,7 +38,7 @@ function LoginScreen(props) {
               // onChangeText={text => setEmail(text)}
               onChangeText={handleChange("email")}
             />
-            <AppText style={{ color: 'red'}}>{errors.email}</AppText>
+            <ErrorMessage error={errors.email}/>
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
@@ -48,7 +49,7 @@ function LoginScreen(props) {
               // onChangeText={text => setPassword(text)}
               onChangeText={handleChange("password")}
             />
-             <AppText style={{ color: 'red'}}>{errors.password}</AppText>
+            <ErrorMessage error={errors.password}/>
             <AppButton
               title="Login"
               onPress={handleSubmit}
