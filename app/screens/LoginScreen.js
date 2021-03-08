@@ -11,7 +11,6 @@ import * as Yup from 'yup';
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password")
-
 })
 
 function LoginScreen(props) {
@@ -24,7 +23,7 @@ function LoginScreen(props) {
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={values => console.log(values)}
-        vaildationSchema={validationSchema}
+        validationSchema={validationSchema}
       >
         { ({ handleChange, handleSubmit, errors }) => (
           <>

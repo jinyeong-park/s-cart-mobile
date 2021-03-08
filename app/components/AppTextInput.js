@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   icon: {
-    margin: 10
+    marginRight: 10
   },
 });
 
