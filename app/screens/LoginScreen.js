@@ -6,6 +6,7 @@ import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText/AppText';
 import ErrorMessage from '../components/ErrorMessage';
+import AppFormField from '../components/AppFormField';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -29,7 +30,8 @@ function LoginScreen(props) {
       >
         { ({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <>
-            <AppTextInput
+            <AppFormField
+              name="email"
               autoCapitalize="none"
               autoCorrect={false}
               icon="email"
@@ -37,13 +39,9 @@ function LoginScreen(props) {
               placeholder="Email"
               textContentType="emailAddress"
               // onChangeText={text => setEmail(text)}
-              onChangeText={handleChange("email")}
-              onBlur={() => setFieldTouched("email")}
             />
-            {/* conditional rendering - if email touched, show error*/}
-            {/* {touched.email && <ErrorMessage error={errors.email}/>} */}
-            <ErrorMessage error={errors.email} visible={touched.email}/>
-            <AppTextInput
+            <AppFormField
+              name="password"
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
@@ -51,10 +49,7 @@ function LoginScreen(props) {
               textContentType="password"
               secureTextEntry={true}
               // onChangeText={text => setPassword(text)}
-              onChangeText={handleChange("password")}
-              onBlur={() => setFieldTouched("password")}
             />
-            <ErrorMessage error={errors.password} visible={touched.password}/>
             <AppButton
               title="Login"
               onPress={handleSubmit}
@@ -94,6 +89,7 @@ import Screen from '../components/Screen'
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText/AppText.ios';
+import AppFormField from '../components/AppFormField';
 
 function LoginScreen(props) {
   const [email, setEmail] = useState();
