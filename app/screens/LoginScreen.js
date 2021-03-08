@@ -7,6 +7,7 @@ import AppButton from '../components/AppButton';
 import AppText from '../components/AppText/AppText';
 import ErrorMessage from '../components/ErrorMessage';
 import AppFormField from '../components/AppFormField';
+import SubmitButton from '../components/SubmitButton';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -50,10 +51,7 @@ function LoginScreen(props) {
               secureTextEntry={true}
               // onChangeText={text => setPassword(text)}
             />
-            <AppButton
-              title="Login"
-              onPress={handleSubmit}
-            />
+            <SubmitButton title="Login" />
             {/* <AppButton title="Login" onPress={() => console.log(email, password)}/> */}
           </>
 
