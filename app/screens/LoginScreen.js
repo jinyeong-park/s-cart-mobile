@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
 import Screen from '../components/Screen'
-import { AppForm, AppFormField, ErrorMessage, SubmitButton}
+import { AppForm, AppFormField, ErrorMessage, SubmitButton } from '../components/forms';
 // import ErrorMessage from '../components/ErrorMessage';
 // import AppForm from '../cmponents/forms/AppForm'
 // import AppFormField from '../components/forms/AppFormField';
