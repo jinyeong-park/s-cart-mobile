@@ -41,18 +41,18 @@ function LoginScreen(props) {
           placeholder="Email"
           textContentType="emailAddress"
           // onChangeText={text => setEmail(text)}
-          />
-          <AppFormField
-            name="password"
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="lock"
-            placeholder="Password"
-            textContentType="password"
-            secureTextEntry={true}
-            // onChangeText={text => setPassword(text)}
-          />
-          <SubmitButton title="Login" />
+        />
+        <AppFormField
+          name="password"
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          placeholder="Password"
+          textContentType="password"
+          secureTextEntry={true}
+          // onChangeText={text => setPassword(text)}
+        />
+        <SubmitButton title="Login" />
           {/* <AppButton title="Login" onPress={() => console.log(email, password)}/> */}
       </AppForm>
     </Screen>
