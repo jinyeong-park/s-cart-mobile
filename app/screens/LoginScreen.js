@@ -20,13 +20,14 @@ function LoginScreen(props) {
 
   return (
     <Screen style={styles.container}>
+      <Image style={styles.logo} source={require("../assets/sCart-logo.png")} />
 
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={values => console.log(values)}
         validationSchema={validationSchema}
       >
-        { ({ handleChange, handleSubmit, errors }) => (
+        { ({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <>
             <AppTextInput
               autoCapitalize="none"
@@ -37,19 +38,23 @@ function LoginScreen(props) {
               textContentType="emailAddress"
               // onChangeText={text => setEmail(text)}
               onChangeText={handleChange("email")}
+              onBlur={() => setFieldTouched("email")}
             />
-            <ErrorMessage error={errors.email}/>
+            {/* conditional rendering - if email touched, show error*/}
+            {/* {touched.email && <ErrorMessage error={errors.email}/>} */}
+            <ErrorMessage error={errors.email} visible={touched.email}/>
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
-              placehoder="Password"
+              placeholder="Password"
               textContentType="password"
               secureTextEntry={true}
               // onChangeText={text => setPassword(text)}
               onChangeText={handleChange("password")}
+              onBlur={() => setFieldTouched("password")}
             />
-            <ErrorMessage error={errors.password}/>
+            <ErrorMessage error={errors.password} visible={touched.password}/>
             <AppButton
               title="Login"
               onPress={handleSubmit}
@@ -59,10 +64,6 @@ function LoginScreen(props) {
 
         )}
       </Formik>
-
-
-
-
     </Screen>
 
   );
