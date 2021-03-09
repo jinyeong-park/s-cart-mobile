@@ -69,7 +69,15 @@ export default function App() {
     // </Screen>
     // <LoginScreen />
     // <RegisterScreen />
-    <ListingEditScreen />
+    // <ListingEditScreen />
+    <Screen>
+      <Icon name="email" size={50} backgroundColor="pink" iconColor="black" />
+       <ListItem
+         title="My title"
+         subTitle="My subtitle"
+         ImageComponent={<Icon name="email" size={50} backgroundColor="pink" iconColor="black" />}
+      />
+    </Screen>
 
 
 
