@@ -10,14 +10,14 @@ import ListItemDeleteAction from '../components/ListItemDeleteAction';
 const initialMessage = [
   {
     id: 1,
-    title: "T1",
-    description: 'D1',
+    title: "jenny",
+    description: 'how are you today?',
     image: require('../assets/jenny.png')
   },
   {
     id: 2,
-    title: "T2",
-    description: 'D2',
+    title: "katie",
+    description: 'I am good thanks, how is things going with you? I have not heard back from you. I am good thanks, how is things going with you? I have not heard back from you',
     image: require('../assets/jenny.png')
   }
 ]

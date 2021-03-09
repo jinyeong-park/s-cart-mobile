@@ -4,9 +4,11 @@ import { Text, StyleSheet } from 'react-native';
 import defaultStyles from '../../config/styles';
 
 // <Heading>My Heading</Heading>
-function AppText({ children, style }) {
+function AppText({ children, style, ...otherProps }) {
   return (
-    <Text style={[defaultStyles.text, style]}>{children}</Text>
+    <Text style={[defaultStyles.text, style]} {...otherProps}>
+      {children}
+    </Text>
   );
 }
 

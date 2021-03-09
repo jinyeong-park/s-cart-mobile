@@ -21,12 +21,18 @@ function ListItem({
         onPress={onPress}>
         <View style={styles.container}>
           {IconComponent}
-          {/* if there is no image, remove the image space&&*/}
+          {/* if there is no image, remove the image space*/}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
+            {/* if title is a long text, show only first line */}
+            <AppText
+              style={styles.title}
+              numberOfLines={1}
+            >
+              {title}
+            </AppText>
             {/* if there is no subtitle, make the one title in center */}
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            {subTitle && <AppText style={styles.subTitle}  numberOfLines={2}>{subTitle}</AppText>}
           </View>
           <MaterialCommunityIcons
             name="chevron-right"
