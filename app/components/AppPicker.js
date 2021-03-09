@@ -8,14 +8,22 @@ import defaultStyles from '../config/styles';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, placeholder, items, onSelectItem, selectedItem,  ...otherProps }) {
+function AppPicker({
+  icon,
+  placeholder,
+  items,
+  onSelectItem,
+  selectedItem,
+  numberOfColumns = 1,
+  PickerItemComponent = PickerItem,
+  width="100%"}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     // React can return only one component => wrap TouchableWF and Modal inside of react fragment
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && <MaterialCommunityIcons
           name={icon}
           size={20}
@@ -40,8 +48,10 @@ function AppPicker({ icon, placeholder, items, onSelectItem, selectedItem,  ...o
             <FlatList
               data={items}
               keyExtractor={item => item.value.toString()}
+              numColumns={numberOfColumns}
               renderItem={({item}) =>
-                <PickerItem
+                <PickerItemComponent
+                  item={item}
                   label={item.label}
                   onPress={() => {
                     setModalVisible(false);
@@ -60,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: '100%',
+    // width: '100%',
     padding: 15,
     marginVertical: 10
   },
