@@ -10,7 +10,8 @@ import AppFormField from '../components/forms/AppFormField';
 import AppFormPicker from '../components/forms/AppFormPicker';
 import SubmitButton from '../components/forms/SubmitButton';
 import CategoryPickerItem from '../components/CategoryPickerItem';
-import ImageInput from '../components/ImageInput';
+// import ImageInput from '../components/ImageInput';
+import ImageInputList from '../components/ImageInputList';
 
 
 const validationSchema = Yup.object().shape({
@@ -78,7 +79,15 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-  const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState([]);
+
+  const handleAddImage = uri => {
+    setImageUris([...imageUris, uri]);
+  }
+
+  const handleRemoveImage = uri => {
+    setImageUris(imageUris.filter(imageUri => imageUri !== uri))
+  }
 
   const requestPermission = async () => {
     if (!result.granted) {
@@ -99,14 +108,14 @@ function ListingEditScreen() {
       }
     } catch (error) {
       console.log("Error reading on image", error)
-
     }
   }
   return (
     <Screen style={styles.container}>
-      <ImageInput
-        imageUri={imageUri}
-        onChangeImage={uri => setImageUri(uri)}
+      <ImageInputList
+        imageUris={imageUris}
+        onAddImage={handleAddImage}
+        onRemoveImage={handleRemoveImage}
       />
       <AppForm
         initialValues={{

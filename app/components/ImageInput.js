@@ -13,7 +13,6 @@ function ImageInput({ imageUri, onChangeImage }) {
     if (!result.granted) {
       alert('You need to enable permission to access the library')
     }
-    // return promise
   }
 
   const handlePress = () => {
@@ -42,7 +41,6 @@ function ImageInput({ imageUri, onChangeImage }) {
       }
     } catch (error) {
       console.log("Error reading on image", error)
-
     }
   }
 
@@ -74,7 +72,6 @@ const styles = StyleSheet.create({
   image: {
     height: '100%',
     width: '100%'
-
   }
 });
 
