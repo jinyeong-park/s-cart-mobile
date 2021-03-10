@@ -78,7 +78,7 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-  const [imageUri, setImageUri] =  useState();
+  const [imageUri, setImageUri] = useState();
 
   const requestPermission = async () => {
     if (!result.granted) {
