@@ -5,6 +5,8 @@ import { useFormikContext } from 'formik';    // pass objects down
 import AppTextInput from '../AppTextInput';
 import ErrorMessage from './ErrorMessage'
 
+
+// text box inside of form
 function AppFormField({ name, width, ...otherProps }) {
   const {setFieldTouched, handleChange, errors, touched} = useFormikContext();
 

@@ -5,13 +5,20 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 
 import Screen from "../components/Screen";
-import AppForm from '../components/forms/AppForm'
-import AppFormField from '../components/forms/AppFormField';
-import AppFormPicker from '../components/forms/AppFormPicker';
-import SubmitButton from '../components/forms/SubmitButton';
+// import AppForm from '../components/forms/AppForm'
+// import AppFormField from '../components/forms/AppFormField';
+// import AppFormPicker from '../components/forms/AppFormPicker';
+// import SubmitButton from '../components/forms/SubmitButton';
+import {
+  Form,
+  FormField,
+  FormPicker as Picker,
+  SubmitButton,
+} from "../components/forms";
 import CategoryPickerItem from '../components/CategoryPickerItem';
 // import ImageInput from '../components/ImageInput';
 import ImageInputList from '../components/ImageInputList';
+import FormImagePicker from '../components/forms/FormImagePicker';
 
 
 const validationSchema = Yup.object().shape({
@@ -19,6 +26,7 @@ const validationSchema = Yup.object().shape({
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
+  images: Yup.array().min(1, "Please select at least one image"),
 });
 
 const categories = [
@@ -79,70 +87,72 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-  const [imageUris, setImageUris] = useState([]);
+  // const [imageUris, setImageUris] = useState([]);
 
-  const handleAddImage = uri => {
-    setImageUris([...imageUris, uri]);
-  }
+  // const handleAddImage = uri => {
+  //   setImageUris([...imageUris, uri]);
+  // }
 
-  const handleRemoveImage = uri => {
-    setImageUris(imageUris.filter(imageUri => imageUri !== uri))
-  }
+  // const handleRemoveImage = uri => {
+  //   setImageUris(imageUris.filter(imageUri => imageUri !== uri))
+  // }
 
-  const requestPermission = async () => {
-    if (!result.granted) {
-      alert('You need to enable permission to access the library')
-    }
-    // return promise
-  }
+  // const requestPermission = async () => {
+  //   if (!result.granted) {
+  //     alert('You need to enable permission to access the library')
+  //   }
+  //   // return promise
+  // }
 
-  useEffect(() => {
-    requestPermission()
-  }, [])
+  // useEffect(() => {
+  //   requestPermission()
+  // }, [])
 
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("Error reading on image", error)
-    }
-  }
+  // const selectImage = async () => {
+  //   try {
+  //     const result = await ImagePicker.launchImageLibraryAsync();
+  //     if (!result.cancelled) {
+  //       setImageUri(result.uri);
+  //     }
+  //   } catch (error) {
+  //     console.log("Error reading on image", error)
+  //   }
+  // }
   return (
     <Screen style={styles.container}>
-      <ImageInputList
+      {/* <ImageInputList
         imageUris={imageUris}
         onAddImage={handleAddImage}
         onRemoveImage={handleRemoveImage}
-      />
-      <AppForm
+      /> */}
+      <Form
         initialValues={{
           title: "",
           price: "",
           description: "",
           category: null,
+          images: []
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
-        <AppFormField
+        <FormImagePicker name="images"/>
+        <FormField maxLength={255} name="title" placeholder="Title" />
+        <FormField
           keyboardType="numeric"
           maxLength={8}
           name="price"
           placeholder="Price"
           width={120}
         />
-        <AppFormPicker
+        <Picker
           items={categories}
           name="category"
           placeholder="Category"
           PickerItemComponent={CategoryPickerItem}
           numberOfColumns={3}
           width="50%"/>
-        <AppFormField
+        <FormField
           maxLength={255}
           multiline
           name="description"
@@ -150,7 +160,7 @@ function ListingEditScreen() {
           placeholder="Description"
         />
         <SubmitButton title="Post" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }
