@@ -5,7 +5,14 @@ import AppPicker from "../AppPicker";
 import ErrorMessage from "./ErrorMessage";
 
 //  dropdown menu inside of form
-function AppFormPicker({ items, name, PickerItemComponent, numberOfColumns, placeholder, width }) {
+function AppFormPicker({
+  items,
+  name,
+  placeholder,
+  PickerItemComponent,
+  numberOfColumns,
+  width
+}) {
 
   const { errors, setFieldValue, touched, values } = useFormikContext();
 
@@ -13,11 +20,11 @@ function AppFormPicker({ items, name, PickerItemComponent, numberOfColumns, plac
     <>
       <AppPicker
         items={items}
+        selectedItem={values[name]}
+        placeholder={placeholder}
+        PickerItemComponent={PickerItemComponent}
         numberOfColumns={numberOfColumns}
         onSelectItem={(item) => setFieldValue(name, item)}
-        placeholder={placeholder}
-        selectedItem={values[name]}
-        PickerItemComponent={PickerItemComponent}
         width={width}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />

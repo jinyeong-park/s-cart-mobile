@@ -17,6 +17,7 @@ function AppPicker({
   numberOfColumns = 1,
   PickerItemComponent = PickerItem,
   width="100%"}) {
+
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -24,11 +25,14 @@ function AppPicker({
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={[styles.container, { width }]}>
-          {icon && <MaterialCommunityIcons
-          name={icon}
-          size={20}
-          color={colors.medium}
-          style={styles.icon}/>}
+          {icon && (
+            <MaterialCommunityIcons
+              name={icon}
+              size={20}
+              color={colors.medium}
+              style={styles.icon}
+            />
+          )}
 
           {/* # conditional rendering */}
           { selectedItem ?
@@ -45,20 +49,22 @@ function AppPicker({
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <Button title="Close" onPress={() => setModalVisible(false)} />
-            <FlatList
-              data={items}
-              keyExtractor={item => item.value.toString()}
-              numColumns={numberOfColumns}
-              renderItem={({item}) =>
-                <PickerItemComponent
-                  item={item}
-                  label={item.label}
-                  onPress={() => {
-                    setModalVisible(false);
-                    onSelectItem(item);
-                  }}
-                />}
-            />
+          <FlatList
+            data={items}
+            keyExtractor={item => item.value.toString()}
+            numColumns={numberOfColumns}
+            renderItem={({item}) => (
+              <PickerItem
+                item={item}
+                label={item.label}
+                onPress={() => {
+                  console.log('clcked!')
+                  setModalVisible(false);
+                  onSelectItem(item);
+                }}
+              />
+            )}
+          />
         </Screen>
       </Modal>
     </>
