@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     flex: 1  // screen takes entire screen
   },
   view: {
-    flex: 1
+    // flex: 1
 
   }
 });

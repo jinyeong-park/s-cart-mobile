@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, Text, Button, Image } from "react-native";
 import * as Yup from "yup";
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
-import * as Location from 'expo-location';
+// import * as Location from 'expo-location';
 
+import useLocation from '../hooks/useLocation';
 import Screen from "../components/Screen";
-// import AppForm from '../components/forms/AppForm'
-// import AppFormField from '../components/forms/AppFormField';
-// import AppFormPicker from '../components/forms/AppFormPicker';
-// import SubmitButton from '../components/forms/SubmitButton';
 import {
   Form,
   FormField,
   FormPicker as Picker,
   SubmitButton,
 } from "../components/forms";
+// import AppForm from '../components/forms/AppForm'
+// import AppFormField from '../components/forms/AppFormField';
+// import AppFormPicker from '../components/forms/AppFormPicker';
+// import SubmitButton from '../components/forms/SubmitButton';
 import PickerItembByCategory from '../components/PickerItembByCategory';
-// import ImageInput from '../components/ImageInput';
 import ImageInputList from '../components/ImageInputList';
 import FormImagePicker from '../components/forms/FormImagePicker';
 
@@ -88,57 +88,10 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-  const [location, setLocation] = useState();
+  const location = useLocation();
 
-  const getLocation = async () => {
-    const result = await Location.requestPermissionsAsync();
-    if (!result.granted) return;
-    const { coords: { latitude, longitude } } = await Location.getLastKnownPositionAsync();
-    setLocation({ latitude, longitude });
-  }
-
-  useEffect(() => {
-    getLocation();
-
-  }, [])
-  // const [imageUris, setImageUris] = useState([]);
-
-  // const handleAddImage = uri => {
-  //   setImageUris([...imageUris, uri]);
-  // }
-
-  // const handleRemoveImage = uri => {
-  //   setImageUris(imageUris.filter(imageUri => imageUri !== uri))
-  // }
-
-  // const requestPermission = async () => {
-  //   if (!result.granted) {
-  //     alert('You need to enable permission to access the library')
-  //   }
-  //   // return promise
-  // }
-
-  // useEffect(() => {
-  //   requestPermission()
-  // }, [])
-
-  // const selectImage = async () => {
-  //   try {
-  //     const result = await ImagePicker.launchImageLibraryAsync();
-  //     if (!result.cancelled) {
-  //       setImageUri(result.uri);
-  //     }
-  //   } catch (error) {
-  //     console.log("Error reading on image", error)
-  //   }
-  // }
   return (
     <Screen style={styles.container}>
-      {/* <ImageInputList
-        imageUris={imageUris}
-        onAddImage={handleAddImage}
-        onRemoveImage={handleRemoveImage}
-      /> */}
       <Form
         initialValues={{
           title: "",
@@ -182,6 +135,7 @@ function ListingEditScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+
   },
 });
 export default ListingEditScreen;
