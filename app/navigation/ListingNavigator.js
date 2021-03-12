@@ -6,12 +6,11 @@ import ListingDetailsScreen from "../screens/ListingDetailsScreen";
 const Stack = createStackNavigator();
 
 const ListingNavigator = () => (
-  // left to right transition
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-  {/* bottom up transition(like modal)
-  <Stack.Navigator mode="modal" screenOptions={{ headerShown: false }}>  */}
+
+  // bottom up transition  mode="modal" to Stack.Navigator
+  <Stack.Navigator mode="modal">
     <Stack.Screen name="Listings" component={ListingScreen} />
-    <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} />
+    <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} options={{headerShown: false}}/>
   </Stack.Navigator>
 );
 

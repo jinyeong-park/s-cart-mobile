@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 // import ListingScreens from '../screens/ListingScreens';
 import ListingNavigator from './ListingNavigator';
 import ListingEditScreen from "../screens/ListingEditScreen";
-import AccountScreen from '../screens/AccountScreen';
+import AccountNavigator from './AccountNavigator'
 // import AccountNavigator from "./AccountNavigator";
 // import NewListingButton from "./NewListingButton";
 // import routes from "./routes";
@@ -26,7 +26,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="Account"
-      component={AccountScreen}
+      component={AccountNavigator}
     />
   </Tab.Navigator>
 );
