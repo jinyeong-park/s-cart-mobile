@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const ListingNavigator = () => (
 
   // bottom up transition  mode="modal" to Stack.Navigator
-  <Stack.Navigator mode="modal">
+  <Stack.Navigator mode="modal" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Listings" component={ListingScreen} />
     <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} options={{headerShown: false}}/>
   </Stack.Navigator>
