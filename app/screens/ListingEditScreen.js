@@ -16,7 +16,7 @@ import {
   FormPicker as Picker,
   SubmitButton,
 } from "../components/forms";
-import CategoryPickerItem from '../components/CategoryPickerItem';
+import PickerItembByCategory from '../components/PickerItembByCategory';
 // import ImageInput from '../components/ImageInput';
 import ImageInputList from '../components/ImageInputList';
 import FormImagePicker from '../components/forms/FormImagePicker';
@@ -163,7 +163,7 @@ function ListingEditScreen() {
           items={categories}
           name="category"
           placeholder="Category"
-          PickerItemComponent={CategoryPickerItem}
+          PickerItemComponent={PickerItembByCategory}
           numberOfColumns={3}
           width="50%"/>
         <FormField

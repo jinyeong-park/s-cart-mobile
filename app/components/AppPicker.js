@@ -10,13 +10,15 @@ import PickerItem from './PickerItem';
 
 function AppPicker({
   icon,
-  placeholder,
   items,
+  placeholder,
   onSelectItem,
   selectedItem,
   numberOfColumns = 1,
+  // component and set the default value as PickerItem
   PickerItemComponent = PickerItem,
-  width="100%"}) {
+  width="100%"
+}) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -34,7 +36,7 @@ function AppPicker({
             />
           )}
 
-          {/* # conditional rendering */}
+          {/* conditional rendering */}
           { selectedItem ?
           (<AppText style={styles.text}>{selectedItem.label}</AppText>
           ) : (<AppText style={styles.placeholder}>{placeholder}</AppText>)}
@@ -54,11 +56,12 @@ function AppPicker({
             keyExtractor={item => item.value.toString()}
             numColumns={numberOfColumns}
             renderItem={({item}) => (
-              <PickerItem
+              // <PickerItem
+              <PickerItemComponent
                 item={item}
                 label={item.label}
                 onPress={() => {
-                  console.log('clcked!')
+                  console.log('clicked!')
                   setModalVisible(false);
                   onSelectItem(item);
                 }}
