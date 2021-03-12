@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
 import Screen from '../components/Screen'
-import { AppForm, AppFormField, ErrorMessage, SubmitButton } from '../components/forms';
+import { Form, FormField, ErrorMessage, SubmitButton } from '../components/forms';
 // import ErrorMessage from '../components/ErrorMessage';
 // import AppForm from '../cmponents/forms/AppForm'
 // import AppFormField from '../components/forms/AppFormField';
@@ -27,12 +27,12 @@ function LoginScreen(props) {
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/sCart-logo.png")} />
 
-      <AppForm
+      <Form
         initialValues={{ email: '', password: '' }}
         onSubmit={values => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField
+        <FormField
           name="email"
           autoCapitalize="none"
           autoCorrect={false}
@@ -42,7 +42,7 @@ function LoginScreen(props) {
           textContentType="emailAddress"
           // onChangeText={text => setEmail(text)}
         />
-        <AppFormField
+        <FormField
           name="password"
           autoCapitalize="none"
           autoCorrect={false}
@@ -54,7 +54,7 @@ function LoginScreen(props) {
         />
         <SubmitButton title="Login" />
           {/* <AppButton title="Login" onPress={() => console.log(email, password)}/> */}
-      </AppForm>
+      </Form>
     </Screen>
 
   );
