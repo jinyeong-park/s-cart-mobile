@@ -8,6 +8,7 @@ const Stack = createStackNavigator();
 const ListingNavigator = () => (
 
   // bottom up transition  mode="modal" to Stack.Navigator
+  // change backbutton color & title: options={{headerTintColor: '#ffbc0f'}}
   <Stack.Navigator mode="modal" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Listings" component={ListingScreen} />
     <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} options={{headerShown: false}}/>
