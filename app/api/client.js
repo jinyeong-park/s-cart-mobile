@@ -6,5 +6,5 @@ const apiClient = create({
 });
 
 // export default object
-export default.apiClient;
+export default apiClient;
 
