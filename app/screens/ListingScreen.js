@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
+import ActivityIndicator from "../components/ActivityIndicator"
 import listingsApi from '../api/listings';
 import AppText from '../components/AppText/AppText';
 import Button from '../components/AppButton';
@@ -28,6 +29,7 @@ import routes from '../navigation/routes';
 function ListingScreens({ navigation }) {
   const [listings, setListings] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   // call first time the component render (cannot use async in useEffect)
@@ -36,7 +38,9 @@ function ListingScreens({ navigation }) {
   }, [])
 
   const loadListings = async () => {
+    setLoading(true);
     const response = await listingsApi.getListings();
+    setLoading(false);
 
     // error handling
     if (!response.ok) {
@@ -53,6 +57,8 @@ function ListingScreens({ navigation }) {
         <AppText>Can't retrieve the lisings</AppText>
         <Button title="Retry" onPress={loadListings}/>
       </>}
+      {/* <ActivityIndicator animator={true} /> */}
+      <ActivityIndicator visible={loading} />
       <FlatList
         data={listings}
         keyExtractor={listing => listing.id.toString()}
