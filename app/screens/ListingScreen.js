@@ -9,6 +9,7 @@ import Screen from '../components/Screen';
 import Card from '../components/Card';
 import colors from '../config/colors';
 import routes from '../navigation/routes';
+import useApi from '../hooks/useApi';
 
 // temporary data
 // const listings  = [
@@ -27,40 +28,45 @@ import routes from '../navigation/routes';
 // ]
 
 function ListingScreens({ navigation }) {
-  const [listings, setListings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // move to useApi
+  // const [listings, setListings] = useState([]);
+  // const [error, setError] = useState(false);
+  // const [loading, setLoading] = useState(false);
+
+  // const { data: listings, error, loading, request: loadListings } = useApi(listingsApi.getListings);
+  // cf) if we call multiple api in single component,  and then don't use above destructuring
+  const getListingsApi = useApi(listingsApi.getListings);
 
 
   // call first time the component render (cannot use async in useEffect)
   useEffect(() => {
-    loadListings();
+    getListingsApi.request(1, 2, 3);
   }, [])
 
-  const loadListings = async () => {
-    setLoading(true);
-    const response = await listingsApi.getListings();
-    setLoading(false);
+  // const loadListings = async () => {
+  //   setLoading(true);
+  //   const response = await listingsApi.getListings();
+  //   setLoading(false);
 
-    // error handling
-    if (!response.ok) {
-      return setError(true)
-    }
-    setError(false);
-    setListings(response.data);
-  }
+  //   // error handling
+  //   if (!response.ok) {
+  //     return setError(true)
+  //   }
+  //   setError(false);
+  //   setListings(response.data);
+  // }
 
 
   return (
     <Screen style={styles.screen}>
-      {error && <>
+      {getListingsApi.error && <>
         <AppText>Can't retrieve the lisings</AppText>
         <Button title="Retry" onPress={loadListings}/>
       </>}
       {/* <ActivityIndicator animator={true} /> */}
-      <ActivityIndicator visible={loading} />
+      <ActivityIndicator visible={getListingsApi.loading} />
       <FlatList
-        data={listings}
+        data={getListingsApi.data}
         keyExtractor={listing => listing.id.toString()}
         renderItem={({ item }) =>
           <Card
