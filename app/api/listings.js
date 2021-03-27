@@ -28,6 +28,6 @@ const addListing = listing => {
   return client.post(endpoint, data);
 }
 export default {
-  getListings.
+  getListings,
   addListing
 };

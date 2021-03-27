@@ -8,7 +8,7 @@ export default useApi = (apiFunc) => {
   const [loading, setLoading] = useState(false);
 
   // ...args : put them in the single array
-  const requetServer = async (...args) => {
+  const requestServer = async (...args) => {
     setLoading(true);
     const response = await apiFunc(...args);
     setLoading(false);
@@ -18,9 +18,9 @@ export default useApi = (apiFunc) => {
       return setError(true)
     }
     setError(false);
-    setListings(response.data);
+    setData(response.data);
   }
 
-  return { data, error, loading, requetServer }
+  return { data, error, loading, requestServer }
 
 }

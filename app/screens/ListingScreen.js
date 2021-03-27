@@ -3,13 +3,14 @@ import { View, StyleSheet, FlatList } from 'react-native';
 
 import ActivityIndicator from "../components/ActivityIndicator"
 import listingsApi from '../api/listings';
+import useApi from '../hooks/useApi';
 import AppText from '../components/AppText/AppText';
 import Button from '../components/AppButton';
 import Screen from '../components/Screen';
 import Card from '../components/Card';
 import colors from '../config/colors';
 import routes from '../navigation/routes';
-import useApi from '../hooks/useApi';
+
 
 // temporary data
 // const listings  = [
@@ -40,7 +41,7 @@ function ListingScreens({ navigation }) {
 
   // call first time the component render (cannot use async in useEffect)
   useEffect(() => {
-    getListingsApi.request(1, 2, 3);
+    getListingsApi.requestServer();
   }, [])
 
   // const loadListings = async () => {
@@ -61,7 +62,7 @@ function ListingScreens({ navigation }) {
     <Screen style={styles.screen}>
       {getListingsApi.error && <>
         <AppText>Can't retrieve the lisings</AppText>
-        <Button title="Retry" onPress={loadListings}/>
+        <Button title="Retry" onPress={getListingsApi.requestServer}/>
       </>}
       {/* <ActivityIndicator animator={true} /> */}
       <ActivityIndicator visible={getListingsApi.loading} />

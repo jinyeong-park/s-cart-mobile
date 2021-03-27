@@ -5,6 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 // import * as Location from 'expo-location';
 
+import listingApi from '../api/listings';
 import useLocation from '../hooks/useLocation';
 import Screen from "../components/Screen";
 import {
