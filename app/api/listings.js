@@ -27,6 +27,8 @@ const addListing = listing => {
 
   return client.post(endpoint, data);
 }
+
+// export as defult
 export default {
   getListings,
   addListing
