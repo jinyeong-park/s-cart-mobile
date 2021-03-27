@@ -4656,7 +4656,7 @@
   "resolved" "https://registry.yarnpkg.com/lottie-ios/-/lottie-ios-2.5.0.tgz"
   "version" "2.5.0"
 
-"lottie-react-native@~2.6.1":
+"lottie-react-native@^2.6.1":
   "integrity" "sha512-Z+6lARvWWhB8n8OSmW7/aHkV71ftsmO7hYXFt0D+REy/G40mpkQt1H7Cdy1HqY4cKAp7EYDWVxhu5+fkdD6o4g=="
   "resolved" "https://registry.yarnpkg.com/lottie-react-native/-/lottie-react-native-2.6.1.tgz"
   "version" "2.6.1"
