@@ -5,7 +5,7 @@ const endpoint = '/listings';
 
 const getListings = () => client.get(endpoint);
 
-const addListing = listing => {
+const addListing = (listing, onUploadProgress) => {
   // content-type
   // application/json
   // multipart/form-data
@@ -25,7 +25,12 @@ const addListing = listing => {
   if (listing.location)
     data.append('location', JSON.stringify(listing.location));
 
-  return client.post(endpoint, data);
+  // Parent > Child
+
+  return client.post(endpoint, data, {
+    onUploadProgress: (progress) =>
+      onUploadProgress(progress.loaded /  progress.total),
+  });
 }
 
 // export as defult

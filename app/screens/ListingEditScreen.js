@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, Button, Image } from "react-native";
 import * as Yup from "yup";
 import * as ImagePicker from 'expo-image-picker';
@@ -21,6 +21,7 @@ import {
 import PickerItembByCategory from '../components/PickerItembByCategory';
 import ImageInputList from '../components/ImageInputList';
 import FormImagePicker from '../components/forms/FormImagePicker';
+import UploadScreen from './UploadScreen';
 
 
 const validationSchema = Yup.object().shape({
@@ -90,10 +91,17 @@ const categories = [
 
 function ListingEditScreen() {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing) => {
+    setUploadVisible(true);
     // listing.location = location;
-    const result = await listingApi.addListing({...listing, location})
+    const result = await listingApi.addListing({...listing, location},
+      (progress) => setProgress(progress)
+    );
+    setUploadVisible(false)
+
     if (!result.ok) {
       return alert('Could nont save the listing.');
     }
@@ -102,6 +110,7 @@ function ListingEditScreen() {
 
   return (
     <Screen style={styles.container}>
+      <UploadScreen progress={progress} visible={uploadVisible}/>
       <Form
         initialValues={{
           title: "",
